@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    {% include "home/partials/_head.html" %}
+   <!-- body -->
+   <body class="main-layout">
+        {% include "home/partials/_loader.html" %}
+        {% include "home/partials/_header.html" %}    
+        {% block content %}{% endblock content %}
+        {% include "home/partials/_footer.html" %}
+        {% include "home/partials/_scripts.html" %}
+   </body>
+   <!-- body -->
+</html>
