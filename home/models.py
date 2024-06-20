@@ -87,8 +87,8 @@ class Testemonial(models.Model):
 
 class TestemonialsItems(models.Model):
     class Meta:
-        verbose_name = "Testemonial"
-        verbose_name_plural = "Testemonials"
+        verbose_name = "Testemonial Items"
+        verbose_name_plural = "Testemonials Items"
 
     image = models.ImageField(upload_to='testemonial/%Y/%m/%d')
     name = models.CharField(max_length=255)
