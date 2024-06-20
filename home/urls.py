@@ -1,6 +1,6 @@
 from django.urls import path
-from home.views import index, blog, contact, about, services
-from site_setup.views import dashboard
+from home.views import blog, contact, about, index, services
+from site_setup.views import dashboard, banner, delete_banner
 
 app_name = 'home'
 
@@ -12,5 +12,9 @@ urlpatterns = [
     path('services/', services, name="services"),
 
     # DASHBOARD
-    path('dashboard/', dashboard, name="dashboard")
+    path('dashboard/', dashboard, name="dashboard"),
+
+    # CAROUSEL
+    path('carousel/', banner, name="carousel"),
+    path('delete_banner', delete_banner, name="delete_banner"),
 ]

@@ -20,15 +20,19 @@ class SiteSetup(models.Model):
     show_socials = models.BooleanField(default=True)
 
     site_name = models.CharField(max_length=100)
-    site_description = models.TextField()
-    contact_email = models.EmailField()
-    phone_number = models.CharField(max_length=20)
+    site_description = models.TextField(blank=True, null=True)
+    contact_email = models.EmailField(blank=True, null=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
 
     favicon = models.ImageField(upload_to='favicons/%y/%m/%d', blank=True, null=True)
     logo = models.ImageField(upload_to='logos/%y/%m/%d', blank=True, null=True)
     logo2 = models.ImageField(upload_to='logos/%y/%m/%d', blank=True, null=True)
 
-
+    facebook = models.URLField(blank=True, null=True)
+    instagram = models.URLField(blank=True, null=True)
+    x_twitter = models.URLField(blank=True, null=True)
+    youtube = models.URLField(blank=True, null=True)
+    tiktok = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.site_name

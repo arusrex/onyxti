@@ -8,6 +8,7 @@ class Carousel(models.Model):
     image = models.ImageField(upload_to='carousel/%Y/%m/%d')
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
+    button_name = models.CharField(max_length=50, blank=True, null=True)
     link = models.URLField(blank=True, null=True)
 
     def __str__(self):

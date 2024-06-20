@@ -2,5 +2,29 @@
 {% load static %}
 <html lang="pt-br">
     {% include "dashboard/partials/_head.html" %}
-    {% block content %}{% endblock content %}
+    <body>
+      {% include "dashboard/partials/_header.html" %}
+      <div class="container-fluid">
+          <div class="row">
+            {% include "dashboard/partials/_sidebar.html" %}
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                  {% comment %} <div class="btn-group me-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                  </div> {% endcomment %}
+                  <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
+                    <i class="fa-solid fa-calendar"></i>
+                    This week
+                  </button>
+                </div>
+              </div>
+              {% block content %}{% endblock content %}
+            </main>
+          </div>
+        </div>
+      {% include "dashboard/partials/_scripts.html" %}
+    </body>
 </html>

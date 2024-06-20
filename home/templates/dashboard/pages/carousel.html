@@ -1,0 +1,46 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+    <div>
+        <a data-bs-target="#AddBanner" data-bs-toggle="modal" role="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-plus"></i> Add new banner</a>
+    </div>
+
+    {% include "dashboard/partials/_table_carousel.html" %}
+
+    <div class="modal modal-lg fade p-4 py-md-5" aria-hidden="true" tabindex="-1" role="dialog" id="AddBanner">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+              <h1 class="fw-bold mb-0 fs-2">New banner</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+      
+            <div class="modal-body p-5 pt-0">
+                <form class="form-control" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        {{banner_form.image.label_tag}}
+                        {{banner_form.image}}
+                    </div>
+                    <div class="mb-3">
+                        {{banner_form.title.label_tag}}
+                        {{banner_form.title}}
+                    </div>
+                    <div class="mb-3">
+                        {{banner_form.description.label_tag}}
+                        {{banner_form.description}}
+                    </div>
+                    <div class="mb-3">
+                        {{banner_form.button_name.label_tag}}
+                        {{banner_form.button_name}}
+                    </div>
+                    <div class="mb-3">
+                        {{banner_form.link.label_tag}}
+                        {{banner_form.link}}
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Save</button>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock content %}

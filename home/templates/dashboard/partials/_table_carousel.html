@@ -1,0 +1,31 @@
+  
+        <h2>Table Carousel</h2>
+        {% if carousel.has_other_pages %}
+            {% include "pagination.html" %}
+        {% endif %}
+        <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Link</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in carousel %}
+                    <tr class="align-middle">
+                        <td>{{item.id}}</td>
+                        <td><a role="button" href="{{item.image.url}}"><img src="{{item.image.url}}" width="50" height="50"></a></td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.description}}</td>
+                        <td><a role="button" href="{{item.link}}">{{item.link}}</a></td>
+                        <td>...</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>

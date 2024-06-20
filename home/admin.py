@@ -1,5 +1,7 @@
 from django.contrib import admin
 from home.models import Carousel, Team, Services, ServicesItems, NewIdeas, NewIdeasItems, Testemonial, TestemonialsItems, Contact, NewsLetter
+from django_summernote.admin import SummernoteModelAdmin
+
 
 admin.site.register(Carousel)
 admin.site.register(Team)
