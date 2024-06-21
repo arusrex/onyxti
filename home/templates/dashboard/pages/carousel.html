@@ -3,44 +3,119 @@
     <div>
         <a data-bs-target="#AddBanner" data-bs-toggle="modal" role="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-plus"></i> Add new banner</a>
     </div>
+    {% comment %} {% include "dashboard/partials/_table_carousel.html" %} {% endcomment %}
 
-    {% include "dashboard/partials/_table_carousel.html" %}
+    <h2>Table Carousel</h2>
+    {% if carousel.has_other_pages %}
+        {% include "pagination.html" %}
+    {% endif %}
+    <div class="table-responsive small">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Button name</th>
+                    <th scope="col">Link</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in page_obj %}
+                <tr class="align-middle">
+                    <td>{{item.id}}</td>
+                    <td><a role="button" href="{{item.image.url}}"><img src="{{item.image.url}}" width="50" height="50"></a></td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.button_name}}</td>
+                    <td><a role="button" href="{{item.link}}">{{item.link}}</a></td>
+                    <td>
+                        <a href="{% url "home:edit_banner" item.id %}" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-pen-nib"></i></a>
+                        {% comment %} <a href="{% url "home:edit_banner" item.id %}" data-bs-target="#update{{item.id}}" data-bs-toggle="modal" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-pen-nib"></i></a> {% endcomment %}
+                        <a data-bs-target="#delete{{item.id}}" data-bs-toggle="modal" class="btn btn-sm btn-outline-secondary"><i class="fa-regular fa-trash-can"></i></a>
+                    </td>
+                </tr>
+                {% comment %} UPDATE BANNER {% endcomment %}
+                {% comment %} <div class="modal modal-lg fade p-4 py-md-5" aria-hidden="true" tabindex="-1" role="dialog" id="update{{item.id}}">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content rounded-4 shadow">
+                            <div class="modal-header p-5 pb-4 border-bottom-0">
+                                <h1 class="fw-bold mb-0 fs-2">Update banner</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                    
+                            <div class="modal-body p-5 pt-0">
+                                <form method="POST" enctype="multipart/form-data" action="{% url "home:edit_banner" item.id %}">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        {{update_form.image.label_tag}}
+                                        {{update_form.image}}
+                                    </div>
+                                    <div class="mb-3">
+                                        {{update_form.title.label_tag}}
+                                        {{update_form.title}}
+                                    </div>
+                                    <div class="mb-3">
+                                        {{update_form.description.label_tag}}
+                                        {{update_form.description}}
+                                    </div>
+                                    <div class="mb-3">
+                                        {{update_form.button_name.label_tag}}
+                                        {{update_form.button_name}}
+                                    </div>
+                                    <div class="mb-3">
+                                        {{update_form.link.label_tag}}
+                                        {{update_form.link}}
+                                    </div>
+                                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
+    {% comment %} NEW BANNER {% endcomment %}
     <div class="modal modal-lg fade p-4 py-md-5" aria-hidden="true" tabindex="-1" role="dialog" id="AddBanner">
         <div class="modal-dialog" role="document">
-          <div class="modal-content rounded-4 shadow">
-            <div class="modal-header p-5 pb-4 border-bottom-0">
-              <h1 class="fw-bold mb-0 fs-2">New banner</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="fw-bold mb-0 fs-2">New banner</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+        
+                <div class="modal-body p-5 pt-0">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{form.image.label_tag}}
+                            {{form.image}}
+                        </div>
+                        <div class="mb-3">
+                            {{form.title.label_tag}}
+                            {{form.title}}
+                        </div>
+                        <div class="mb-3">
+                            {{form.description.label_tag}}
+                            {{form.description}}
+                        </div>
+                        <div class="mb-3">
+                            {{form.button_name.label_tag}}
+                            {{form.button_name}}
+                        </div>
+                        <div class="mb-3">
+                            {{form.link.label_tag}}
+                            {{form.link}}
+                        </div>
+                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Save</button>
+                    </form>
+                </div>
             </div>
-      
-            <div class="modal-body p-5 pt-0">
-                <form class="form-control" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        {{banner_form.image.label_tag}}
-                        {{banner_form.image}}
-                    </div>
-                    <div class="mb-3">
-                        {{banner_form.title.label_tag}}
-                        {{banner_form.title}}
-                    </div>
-                    <div class="mb-3">
-                        {{banner_form.description.label_tag}}
-                        {{banner_form.description}}
-                    </div>
-                    <div class="mb-3">
-                        {{banner_form.button_name.label_tag}}
-                        {{banner_form.button_name}}
-                    </div>
-                    <div class="mb-3">
-                        {{banner_form.link.label_tag}}
-                        {{banner_form.link}}
-                    </div>
-                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Save</button>
-                </form>
-            </div>
-          </div>
         </div>
     </div>
 {% endblock content %}

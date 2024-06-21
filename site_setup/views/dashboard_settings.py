@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from home.models import NewsLetter, Contact
-from site_setup.views.carousel_view import banner
 
 def dashboard(request):
     newsletter = NewsLetter.objects.order_by('-created_at')[:20]

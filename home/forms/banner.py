@@ -7,7 +7,7 @@ class BannerForm(forms.ModelForm):
         model = Carousel
         fields = '__all__'
         widgets = {
-            'image': forms.FileInput(attrs={'class':'form-control', 'accept':'image/*',}),
+            'image': forms.ClearableFileInput(attrs={'accept':'image/*',}),
             'title': forms.TextInput(attrs={'class':'form-control',}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'widget': SummernoteWidget()}),
             'button_name': forms.TextInput(attrs={'class':'form-control',}),
