@@ -9,7 +9,7 @@ class BannerForm(forms.ModelForm):
         widgets = {
             'image': forms.ClearableFileInput(attrs={'accept':'image/*',}),
             'title': forms.TextInput(attrs={'class':'form-control',}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'widget': SummernoteWidget()}),
+            'description': SummernoteWidget(),
             'button_name': forms.TextInput(attrs={'class':'form-control',}),
             'link': forms.URLInput(attrs={'class':'form-control',}),
         }

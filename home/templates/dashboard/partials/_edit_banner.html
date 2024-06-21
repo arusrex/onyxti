@@ -3,7 +3,13 @@
     <div class="modal-body p-5 pt-0">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="mb-3">
+            {% for p in update_form %}
+                <div class="mb-3">
+                    {{p.label_tag}}
+                    {{p}}
+                </div>
+            {% endfor %}
+            {% comment %} <div class="mb-3">
                 {{update_form.image.label_tag}}
                 {{update_form.image}}
             </div>
@@ -22,7 +28,7 @@
             <div class="mb-3">
                 {{update_form.link.label_tag}}
                 {{update_form.link}}
-            </div>
+            </div> {% endcomment %}
             <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Save</button>
         </form>
     </div>
