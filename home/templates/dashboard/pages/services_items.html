@@ -31,7 +31,7 @@
                     <td>{{item.button_name}}</td>
                     <td><a role="button" href="{{item.link}}">{{item.link}}</a></td>
                     <td>
-                        <a href="{% url "home:edit_banner" item.id %}" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-pen-nib"></i></a>
+                        <a href="{% url "home:edit_service" item.id %}" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-pen-nib"></i></a>
                         <a data-bs-target="#delete{{item.id}}" data-bs-toggle="modal" class="btn btn-sm btn-outline-secondary"><i class="fa-regular fa-trash-can"></i></a>
                     </td>
                 </tr>
@@ -52,27 +52,12 @@
                 <div class="modal-body p-5 pt-0">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        
+                        {% for item in form %}
                         <div class="mb-3">
-                            {{form.image.label_tag}}
-                            {{form.image}}
+                            {{item.label_tag}}
+                            {{item}}
                         </div>
-                        <div class="mb-3">
-                            {{form.title.label_tag}}
-                            {{form.title}}
-                        </div>
-                        <div class="mb-3">
-                            {{form.description.label_tag}}
-                            {{form.description}}
-                        </div>
-                        <div class="mb-3">
-                            {{form.button_name.label_tag}}
-                            {{form.button_name}}
-                        </div>
-                        <div class="mb-3">
-                            {{form.link.label_tag}}
-                            {{form.link}}
-                        </div>
+                        {% endfor %}
                         <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Save</button>
                     </form>
                 </div>

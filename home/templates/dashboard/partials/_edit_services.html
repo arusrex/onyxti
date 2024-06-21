@@ -1,6 +1,6 @@
 {% extends "base_dashboard.html" %}
 {% block content %}
-    <div class="modal-body p-5 pt-0">
+    <div class="p-5 pt-0">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% if obj.image %}

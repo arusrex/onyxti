@@ -40,6 +40,7 @@ def edit_banner(request, id):
         update_form = BannerForm(instance=obj)
 
     context = {
+        'obj': obj,
         'update_form': update_form,
     }
 
