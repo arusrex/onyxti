@@ -19,4 +19,5 @@ class NewIdeasItemsForm(forms.ModelForm):
             'image': forms.ClearableFileInput(attrs={'class':'form-control', 'accept':'image/*',}),
             'title': forms.TextInput(attrs={'class':'form-control',}),
             'link': forms.URLInput(attrs={'class':'form-control',}),
+            'slug': forms.TextInput(attrs={'class':'form-control', 'readonly':'true',}),
         }

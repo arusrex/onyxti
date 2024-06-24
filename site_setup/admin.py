@@ -9,6 +9,7 @@ class SiteSettingsAdmin(admin.ModelAdmin):
     # def has_delete_permission(self, request, obj=None):
     #     # Permitir exclusão (opcional, se você quiser permitir a exclusão)
     #     return super().has_delete_permission(request, obj)
-    
+
 admin.site.register(SiteSetup, SiteSettingsAdmin)
+# admin.site.register(SiteSetup)
 

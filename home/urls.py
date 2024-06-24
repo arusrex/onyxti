@@ -31,8 +31,11 @@ urlpatterns = [
     # SERVICES ITEMS
     path('services_items/', services_items, name="services_items"),
     path('edit_service/<int:id>/', edit_service, name="edit_service"),
-    # path('delete_service/<int:id>/', delete_service, name="delete_service"),
+    path('delete_service/<slug:slug>/', delete_service, name="delete_service"),
 
     #NEW IDEAS
     path('new_ideas/', new_ideas, name="new_ideas"),
+    path('new_ideas_items/', new_ideas_items, name="new_ideas_items"),
+    path('edit_new_idea/<slug:slug>/', edit_new_idea, name="edit_new_idea"),
+    path('delete_new_idea/<slug:slug>/', delete_new_idea, name="delete_new_idea"),
 ]

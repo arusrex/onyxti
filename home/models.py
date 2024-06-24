@@ -6,11 +6,17 @@ class Carousel(models.Model):
         verbose_name = "Carousel"
         verbose_name_plural = 'Carousels'
 
+    slug = models.SlugField(unique=True, blank=True)
     image = models.ImageField(upload_to='carousel/%Y/%m/%d')
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True, null=True)
     button_name = models.CharField(max_length=50, blank=True, null=True)
     link = models.URLField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Carousel, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
@@ -47,7 +53,7 @@ class ServicesItems(models.Model):
 
     slug = models.SlugField(unique=True, blank=True)
     image = models.ImageField(upload_to='services/%Y/%m/%d')
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     link = models.URLField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
@@ -65,7 +71,7 @@ class NewIdeas(models.Model):
         verbose_name_plural = "New Ideas"
 
     title = models.CharField(max_length=255)
-    description = models.URLField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -75,9 +81,9 @@ class NewIdeasItems(models.Model):
         verbose_name = "New Idea Item"
         verbose_name_plural = "New Ideas Items"
 
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True, blank=True)
     image = models.ImageField(upload_to='new_ideas/%Y/%m/%d')
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     link = models.URLField(blank=True, null=True)
 
     def save(self, *args, **kwargs):

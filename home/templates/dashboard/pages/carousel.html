@@ -5,7 +5,7 @@
     </div>
 
     <h2>Table Carousel</h2>
-    {% if carousel.has_other_pages %}
+    {% if page_obj.has_other_pages %}
         {% include "pagination.html" %}
     {% endif %}
     <div class="table-responsive small">

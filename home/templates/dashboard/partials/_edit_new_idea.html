@@ -1,7 +1,6 @@
 {% extends "base_dashboard.html" %}
 {% block content %}
-    <h1>Services</h1>
-    <div class="modal-body p-5 pt-0">
+    <div class="p-5 pt-0">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% if obj.image %}
@@ -9,13 +8,13 @@
                 <img src="{{obj.image.url}}" class="img-fluid rounded d-block shadow border border-sm p-4" width="300" height"200"/>
             </div>
             {% endif %}
-            {% for item in form %}
-            <div class="mb-3">
-                {{item.label_tag}}
-                {{item}}
-            </div>
+            {% for p in update_form %}
+                <div class="mb-3">
+                    {{p.label_tag}}
+                    {{p}}
+                </div>
             {% endfor %}
-            <button class="mb-4 btn btn-sm btn-primary" type="submit">Save</button>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Save</button>
         </form>
     </div>
 {% endblock content %}

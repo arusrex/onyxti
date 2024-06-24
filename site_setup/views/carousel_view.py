@@ -13,7 +13,7 @@ def banners(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Saved !')
-            return redirect(request, 'home:carousel')
+            return redirect('home:carousel')
 
     paginator = Paginator(objs, 20)  # 20 objetos por página
     page_number = request.GET.get('page')

@@ -31,7 +31,7 @@ def services_items(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Saved!')
-            print('salvo', form)
+            redirect('home:services_items')
 
     paginator = Paginator(objs, 20)
     page_number = request.GET.get('page')
@@ -60,3 +60,11 @@ def edit_service(request, id):
     }
 
     return render(request, 'dashboard/partials/_edit_services.html', context)
+
+def delete_service(request, slug):
+    obj = ServicesItems.objects.get(slug=slug)
+    if obj:
+        obj.delete()
+        messages.success(request, 'Deleted!')
+    
+    return redirect('home:services_items')

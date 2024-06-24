@@ -1,1 +1,17 @@
-NEW IDEAS
+{% extends "base_dashboard.html" %}
+{% block content %}
+    <div class="container mb-4">
+        <h1>New Ideas</h1>
+        <form method="POST" action="{% url "home:new_ideas" %}">
+            {% csrf_token %}
+            {% for item in form %}
+                <div class="mb-3">
+                    {{item.label_tag}}
+                    {{item}}
+                </div>
+            {% endfor %}
+            <button class="btn btn-sm btn-primary" type="submit">Save</button>
+        </form>
+    </div>
+{% endblock content %}
+

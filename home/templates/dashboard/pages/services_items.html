@@ -4,7 +4,7 @@
         <a data-bs-target="#AddBanner" data-bs-toggle="modal" role="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-plus"></i> Add new banner</a>
     </div>
     
-    <h2>Table Carousel</h2>
+    <h2>Table Services Items</h2>
     {% if carousel.has_other_pages %}
         {% include "pagination.html" %}
     {% endif %}
@@ -31,6 +31,24 @@
                         <a data-bs-target="#delete{{item.id}}" data-bs-toggle="modal" class="btn btn-sm btn-outline-secondary"><i class="fa-regular fa-trash-can"></i></a>
                     </td>
                 </tr>
+                {% comment %} MODAL DELETE {% endcomment %}
+                <div class="modal" tabindex="-1" id="delete{{item.id}}">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete register</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Do you really want to delete this registration?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a href="{% url "home:delete_service" item.slug %}" type="button" class="btn btn-primary">Confirm delete</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
                 {% endfor %}
             </tbody>
         </table>
