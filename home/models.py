@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 class Carousel(models.Model):
     class Meta:
@@ -44,9 +45,16 @@ class ServicesItems(models.Model):
         verbose_name = "Service Item"
         verbose_name_plural = "Services Items"
 
+    slug = models.SlugField(unique=True, blank=True)
     image = models.ImageField(upload_to='services/%Y/%m/%d')
     title = models.CharField(max_length=255)
     link = models.URLField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(ServicesItems, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title
@@ -67,9 +75,15 @@ class NewIdeasItems(models.Model):
         verbose_name = "New Idea Item"
         verbose_name_plural = "New Ideas Items"
 
+    slug = models.SlugField()
     image = models.ImageField(upload_to='new_ideas/%Y/%m/%d')
     title = models.CharField(max_length=255)
     link = models.URLField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(NewIdeasItems, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

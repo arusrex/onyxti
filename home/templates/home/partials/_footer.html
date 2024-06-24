@@ -3,63 +3,53 @@
         <footer>
             <div class="footer">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <img class="logo1" src="{% static 'images/logo1.png' %}" alt="#"/>
-                        <ul class="about_us">
-                            <li>dolor sit amet, consectetur<br> magna aliqua. Ut enim ad <br>minim veniam, <br> quisdotempor incididunt r</li>
-                        </ul>
-                        <ul class="social_icon">
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
+                    <div class="row justify-content-between ">
+                        <div class="col-sm-6">
+                            <h3 class="mx-auto">Menu</h3>
+                            <ul class="link_menu">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">About services</a></li>
+                                <li><a href="#">About Departments</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <h3>Useful Link</h3>
-                        <ul class="link_menu">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About services</a></li>
-                            <li><a href="#">About Departments</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
+                        <div class="col-sm-6 mt-4 my-auto">
+                            {% if settings.show_logo %}
+                                {% if settings.logo %}
+                                    <img class="logo1" src="{{settings.logo.url}}" alt="#"/>
+                                {% elif settings.logo2 %}
+                                    <img class="logo1" src="{{settings.logo2.url}}" alt="#"/>
+                                {% else %}
+                                    <h1 class="text-white">{{settings.site_name}}</h1>
+                                {% endif %}
+                            {% else %}
+                                <h1 class="text-white">{{settings.site_name}}</h1>
+                            {% endif %}
+                            <ul class="d-flex justify-content-center about_us">
+                                <li class="text-center">{{settings.site_description}}</li>
+                            </ul>
+                            <ul class="social_icon d-flex justify-content-center">
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            </ul>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <h3>The Services</h3>
-                        <ul class="link_menu">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About services</a></li>
-                            <li><a href="#">About Departments</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <h3>Contact Us</h3>
-                        <ul class="link_menu">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About services</a></li>
-                            <li><a href="#">About Departments</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
-                        </div>
-                        <div class="col-md-8 offset-md-4 ">
-                        <form class="bottom_form">
-                            <h3>Newsletter</h3>
-                            <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                            <button class="sub_btn">subscribe</button>
+                    </div>
+                    <div>
+                        <form class="bottom_form mt-4">
+                            <h3>Inscreva-se</h3>
+                            <input class="enter" placeholder="Digite seu email" type="text" name="Enter your email">
+                            <button class="sub_btn">enviar</button>
                         </form>
-                        </div>
                     </div>
                 </div>
                 <div class="copyright">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
-                                <p>© 2019 All Rights Reserved. Design by <a href="https://html.design/"> Free Html Templates</a></p>
+                                <p>© {% now "Y" %} Todos os direitos reservados.</a></p>
                             </div>
                         </div>
                     </div>

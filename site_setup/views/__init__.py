@@ -3,3 +3,7 @@ from .site_setup import *
 from .carousel_view import *
 from .team_view import *
 from .services_view import *
+from .contact_view import *
+from .new_ideas_view import *
+from .newsletter_view import *
+from .testemonial_view import *

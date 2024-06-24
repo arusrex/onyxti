@@ -3,7 +3,7 @@
     <div>
         <a data-bs-target="#AddBanner" data-bs-toggle="modal" role="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-plus"></i> Add new banner</a>
     </div>
-
+    
     <h2>Table Carousel</h2>
     {% if carousel.has_other_pages %}
         {% include "pagination.html" %}
@@ -15,8 +15,6 @@
                     <th scope="col">#</th>
                     <th scope="col">Image</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Button name</th>
                     <th scope="col">Link</th>
                     <th scope="col">Options</th>
                 </tr>
@@ -27,8 +25,6 @@
                     <td>{{item.id}}</td>
                     <td><a role="button" href="{{item.image.url}}"><img src="{{item.image.url}}" width="50" height="50"></a></td>
                     <td>{{item.title}}</td>
-                    <td>{{item.description}}</td>
-                    <td>{{item.button_name}}</td>
                     <td><a role="button" href="{{item.link}}">{{item.link}}</a></td>
                     <td>
                         <a href="{% url "home:edit_service" item.id %}" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-pen-nib"></i></a>

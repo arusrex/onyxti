@@ -35,6 +35,7 @@
 
 html {
      scroll-behavior: smooth;
+     font-size: 72.5% !important;
 }
 
 body {
@@ -954,7 +955,7 @@ ul.social_icon li a:hover {
 
 ul.link_menu li {
      display: block;
-     text-align: left;
+     text-align: center;
 }
 
 ul.link_menu li a {
@@ -972,49 +973,41 @@ ul.link_menu li a:hover {
 
 .bottom_form {
      display: flex;
-     flex-wrap: wrap;
-     margin-top: 32px;
+     justify-content: center;
+     padding: 10px 0;
 }
 
 .bottom_form h3 {
+     border: none;
+     font-size: 100%;
      font-weight: 600;
-     font-size: 20px;
-     line-height: 25px;
-     text-align: left;
      color: #fff;
-     padding-top: 12px;
-     margin-right: 93px;
+     margin-right: 12px;
      text-transform: uppercase;
-     border: inherit;
+     margin-top: auto;
+     margin-bottom: auto;
 }
 
 .bottom_form .enter {
      border: inherit;
      padding: 0px 19px;
-     width: 45%;
-     height: 45px;
      background: #fffffff2;
-     color: #ccc8c8;
+     color: #4f4e4e;
      font-size: 17px;
      font-weight: 300;
-     float: left;
-     border-radius: 10px;
-     margin-bottom: 20px;
+     border-radius: 5px;
+     margin: auto 0;
 }
 
 .sub_btn {
-     font-size: 17px;
      transition: ease-in all 0.5s;
      background-color: #ffca56;
      color: #fff;
-     padding: 8px 0px;
-     max-width: 163px;
-     border-radius: 10px;
-     width: 100%;
+     border-radius: 5px;
      font-weight: 500;
      text-transform: uppercase;
      margin-left: 7px;
-     height: 46px;
+     padding: 0px 4px;
 }
 
 .sub_btn:hover {

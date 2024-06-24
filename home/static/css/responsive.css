@@ -26,9 +26,9 @@
     .ideas::before {
         right: 5px;
     }
-    .bottom_form h3 {
-        margin-right: 42px;
-    }
+    /* .bottom_form h3 {
+        margin-right: 12px;
+    } */
     .about_us li {
         font-size: 16px;
     }
@@ -81,12 +81,12 @@
     .map {
         padding-right: 74px;
     }
-    .bottom_form h3 {
-        margin-right: 19px;
+    /* .bottom_form h3 {
+        margin-right: 12px;
     }
     .bottom_form .enter {
         width: 39%;
-    }
+    } */
     .sub_btn {
         max-width: 125px;
     }
@@ -131,10 +131,10 @@
     .sub_btn {
         max-width: 140px;
     }
-    .bottom_form h3 {
+    /* .bottom_form h3 {
         margin-right: 11px;
         margin-top: 0 !important;
-    }
+    } */
     .main_form {
         margin: 0;
     }
@@ -250,9 +250,9 @@
     ul.social_icon {
         margin-bottom: 10px;
     }
-    .bottom_form .enter {
+    /* .bottom_form .enter {
         width: 100%;
-    }
+    } */
     .navigation.navbar {
         float: right;
         display: inherit !important;
