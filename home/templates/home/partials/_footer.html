@@ -38,9 +38,13 @@
                         </div>
                     </div>
                     <div>
-                        <form class="bottom_form mt-4">
+                        <form class="bottom_form mt-4" method="POST" action="{% url "home:newsletter" %}">
+                            {% csrf_token %}
                             <h3>Inscreva-se</h3>
-                            <input class="enter" placeholder="Digite seu email" type="text" name="Enter your email">
+                            {% for item in newsletter_form %}
+                                {{item}}
+                            {% endfor %}
+                            {% comment %} <input class="enter" placeholder="Digite seu email" type="text" name="Enter your email"> {% endcomment %}
                             <button class="sub_btn">enviar</button>
                         </form>
                     </div>

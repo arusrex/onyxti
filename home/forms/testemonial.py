@@ -2,7 +2,7 @@ from django import forms
 from home.models import Testemonial, TestemonialsItems
 from django_summernote.widgets import SummernoteWidget
 
-class TeatemonialForm(forms.ModelForm):
+class TestemonialForm(forms.ModelForm):
     class Meta:
         model = Testemonial
         fields = '__all__'

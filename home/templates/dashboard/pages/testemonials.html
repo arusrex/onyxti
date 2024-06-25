@@ -1,0 +1,16 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+    <div class="container mb-4">
+        <h1>Testemonials</h1>
+        <form method="POST" enctype="multipart/form-data" action="{% url "home:dash_testemonial" %}">
+            {% csrf_token %}
+            {% for item in form %}
+                <div class="mb-3">
+                    {{item.label_tag}}
+                    {{item}}
+                </div>
+            {% endfor %}
+            <button class="btn btn-sm btn-primary" type="submit">Save</button>
+        </form>
+    </div>
+{% endblock content %}

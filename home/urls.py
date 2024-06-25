@@ -1,9 +1,11 @@
 from django.urls import path
-from home.views import blog, contact, about, index, services
+from home.views import blog, contact, new_contact, about, index, services
 from site_setup.views import dashboard, team
 from site_setup.views.services_view import *
 from site_setup.views.carousel_view import *
 from site_setup.views.new_ideas_view import *
+from site_setup.views.testemonial_view import *
+from site_setup.views.newsletter_view import *
 
 app_name = 'home'
 
@@ -13,6 +15,12 @@ urlpatterns = [
     path('contact/', contact, name="contact"),
     path('about/', about, name="about"),
     path('services/', services, name="services"),
+
+    #NEW CONTACT
+    path('new_contact/', new_contact, name="new_contact"),
+
+    #NEWSLETTER
+    path('newsletter/', newsletter, name="newsletter"),
 
     # DASHBOARD
     path('dashboard/', dashboard, name="dashboard"),
@@ -38,4 +46,10 @@ urlpatterns = [
     path('new_ideas_items/', new_ideas_items, name="new_ideas_items"),
     path('edit_new_idea/<slug:slug>/', edit_new_idea, name="edit_new_idea"),
     path('delete_new_idea/<slug:slug>/', delete_new_idea, name="delete_new_idea"),
+
+    #TESTEMONIALS
+    path('dash_testemonial/', dash_testemonial, name="dash_testemonial"),
+    path('testemonials/', testemonials, name="testemonials"),
+    path('testemonial/<int:id>/', testemonial, name="testemonial"),
+    path('delete_testemonial/<int:id>/', delete_testemonial, name="delete_testemonial"),
 ]

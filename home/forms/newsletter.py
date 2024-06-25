@@ -6,5 +6,5 @@ class NewsLetterForm(forms.ModelForm):
         model = NewsLetter
         fields = '__all__'
         widgets = {
-            'email': forms.TextInput(attrs={'class':'enter',}),
+            'email': forms.TextInput(attrs={'class':'enter','placeholder':'Digite seu email','type':'text',}),
         }

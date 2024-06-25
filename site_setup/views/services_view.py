@@ -13,7 +13,6 @@ def dash_services(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Saved!')
-            print('salvo', form)
     
     context = {
         'obj': obj,

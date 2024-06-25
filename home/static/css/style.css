@@ -1113,3 +1113,42 @@ ul.link_menu li a:hover {
      margin: 0 auto;
      display: block;
 }
+
+.custom-message {
+     margin: 0 auto !important;
+     display: flex !important;
+     justify-content: center !important;
+     align-items: center !important;
+     flex-direction: row !important;
+     flex-wrap: wrap !important;
+     max-width: 75% !important;
+     opacity: 1;
+     transition: opacity 5s ease-out !important;
+     animation: fadeOut 5s 5s forwards !important;
+ }
+ 
+ @keyframes fadeOut {
+     to {
+         opacity: 0;
+     }
+ }
+
+ .alert-success {
+     color: white;
+     background-color: green;
+     border-color: rgb(189, 254, 175);
+     padding: 0.75rem 1.25rem !important;
+     margin-bottom: 1rem !important;
+     border: 1px solid transparent !important;
+     border-radius: 0.25rem !important;
+ }
+ 
+ .alert-error {
+     color: #ffffff !important;
+     background-color: #ec0014 !important;
+     border-color: #f5c6cb !important;
+     padding: 0.75rem 1.25rem !important;
+     margin-bottom: 1rem !important;
+     border: 1px solid transparent !important;
+     border-radius: 0.25rem !important;
+ }
