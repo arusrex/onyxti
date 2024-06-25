@@ -1,11 +1,13 @@
 from django.urls import path
-from home.views import blog, contact, new_contact, about, index, services
+from home.views import blog, about, index, services
 from site_setup.views import dashboard, team
 from site_setup.views.services_view import *
 from site_setup.views.carousel_view import *
 from site_setup.views.new_ideas_view import *
 from site_setup.views.testemonial_view import *
 from site_setup.views.newsletter_view import *
+from home.views.contact_view import *
+from site_setup.views.contact_view import *
 
 app_name = 'home'
 
@@ -16,11 +18,15 @@ urlpatterns = [
     path('about/', about, name="about"),
     path('services/', services, name="services"),
 
-    #NEW CONTACT
+    #CONTACTS
+    path('contacts', contacts, name="contacts"),
     path('new_contact/', new_contact, name="new_contact"),
+    path('delete_contact/<int:id>/', delete_contact, name="delete_contact"),
 
     #NEWSLETTER
     path('newsletter/', newsletter, name="newsletter"),
+    path('newsletters/', newsletters, name="newsletters"),
+    path('delete_newsletter/<int:id>/', delete_newsletter, name="delete_newsletter"),
 
     # DASHBOARD
     path('dashboard/', dashboard, name="dashboard"),

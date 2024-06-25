@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from home.forms import ContactForm
 from django.contrib import messages
+from home.models import Contact
 
 def contact(request):
     return render(request, 'home/pages/contact.html')
@@ -17,7 +18,8 @@ def new_contact(request):
         else:
             messages.error(request, 'Algo deu errado, tente novamente mais tarde!')
 
-        
     return redirect('home:contact')
+
+
     
 
