@@ -72,7 +72,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <a class="nav-link d-flex align-items-center gap-2" href="{% url "home:users" %}">
+                    <i class="fa-solid fa-users"></i>
+                    Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="{% url "home:settings" %}">
                     <i class="fa-solid fa-gear"></i>
                     Settings
                     </a>
@@ -82,18 +88,22 @@
             <hr class="my-3">
 
             <ul class="nav flex-column mb-auto">
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <i class="fa-solid fa-address-card"></i>
-                Account Settings
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Sign out
-                </a>
-            </li>
+                <li class="nav-item dropdown-center">
+                    <a class="nav-link d-flex align-items-center gap-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-address-card"></i>
+                    Account Settings
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url "home:edit_self" %}">Update Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url "home:change_password" %}">Change Password</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Sign out
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

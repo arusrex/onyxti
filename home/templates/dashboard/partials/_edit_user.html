@@ -1,0 +1,17 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<div class="container mb-3">
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.name != 'password' %}
+            <div class="mb-3 form-check form-switch">
+                <label class="form-check-label" for="{{ field.id_for_label }}">{{field.label}}</label>
+                {{field}}
+            </div>
+            {% endif %}
+        {% endfor %}
+        <button class="btn btn-sm btn-primary" type="submit">Save</button>
+    </form>
+</div>
+{% endblock content %}

@@ -1,6 +1,6 @@
 from django.urls import path
 from home.views import blog, about, index, services
-from site_setup.views import dashboard, team
+from site_setup.views import dashboard, team, dashboard_settings
 from site_setup.views.services_view import *
 from site_setup.views.carousel_view import *
 from site_setup.views.new_ideas_view import *
@@ -8,6 +8,7 @@ from site_setup.views.testemonial_view import *
 from site_setup.views.newsletter_view import *
 from home.views.contact_view import *
 from site_setup.views.contact_view import *
+from site_setup.views.dashboard_settings import *
 
 app_name = 'home'
 
@@ -18,8 +19,18 @@ urlpatterns = [
     path('about/', about, name="about"),
     path('services/', services, name="services"),
 
+    #USER
+    path('users/', users, name="users"),
+    path('edit_user/<int:id>/', edit_user, name="edit_user"),
+    path('edit_self/', edit_self, name="edit_self"),
+    path('change_password/', change_password, name="change_password"),
+    path('delete_user/<int:id>/', delete_user, name="delete_user"),
+
+    #SETTINGS
+    path('settings/', dashboard_settings, name="settings"),
+
     #CONTACTS
-    path('contacts', contacts, name="contacts"),
+    path('contacts/', contacts, name="contacts"),
     path('new_contact/', new_contact, name="new_contact"),
     path('delete_contact/<int:id>/', delete_contact, name="delete_contact"),
 
