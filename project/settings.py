@@ -195,5 +195,7 @@ AXES_FAILURE_LIMIT = 5
 AXES_COOLOFF_TIME = 1 # Uma hora
 AXES_RESET_ON_SUCCESS = True
 
-LOGIN_REDIRECT_URL = 'blog:index'
-LOGOUT_REDIRECT_URL = 'blog:index'
+LOGIN_REDIRECT_URL = 'home:dashboard'
+LOGOUT_REDIRECT_URL = 'home:login'
+
+LOGIN_URL = '/login/'

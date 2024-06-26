@@ -4,6 +4,7 @@ from django.contrib import messages
 from site_setup.models import SiteSetup
 from home.models import NewsLetter
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 def newsletter(request):
     settings = SiteSetup.objects.first()
@@ -19,6 +20,7 @@ def newsletter(request):
             return redirect('home:index')
     return redirect('home:index')
 
+@login_required
 def newsletters(request):
     objs = NewsLetter.objects.order_by('-created_at')
 
@@ -32,6 +34,7 @@ def newsletters(request):
 
     return render(request, 'dashboard/pages/newsletters.html', context)
 
+@login_required
 def delete_newsletter(request, id):
     obj = NewsLetter.objects.get(id=id)
     if obj:

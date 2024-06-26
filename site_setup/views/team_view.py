@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from home.models import Team
 from home.forms.team import TeamForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def team(request):
     obj = Team.objects.first()
     form = TeamForm(instance=obj)

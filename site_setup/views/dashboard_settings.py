@@ -4,7 +4,41 @@ from site_setup.forms import NewUserForm, EditUserForm, PasswordEditForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 
+def user_login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'Success!')
+                return redirect('home:dashboard')
+            else:
+                messages.error(request, 'Error!')
+        else:
+            messages.error(request, 'Error!')
+    else:
+        form = AuthenticationForm()
+
+    context = {
+        'form': form,
+    }
+    
+    return render(request, 'dashboard/pages/authentication.html', context)
+
+@login_required
+def user_logout(request):
+    logout(request)
+    messages.success(request, 'Success!')
+    return redirect('home:login')
+
+@login_required
 def dashboard(request):
     try:
         newsletter = NewsLetter.objects.order_by('-created_at')[:5]
@@ -21,6 +55,7 @@ def dashboard(request):
 
     return render(request, 'dashboard/pages/control.html', context)
 
+@login_required
 def users(request):
     objs = User.objects.order_by('-id')
     form = NewUserForm()
@@ -45,6 +80,7 @@ def users(request):
 
     return render(request, 'dashboard/pages/users.html', context)
 
+@login_required
 def edit_user(request, id):
     obj = User.objects.get(id=id)
     form = EditUserForm(instance=obj)
@@ -65,6 +101,7 @@ def edit_user(request, id):
 
     return render(request, 'dashboard/partials/_edit_user.html', context)
 
+@login_required
 def edit_self(request):
     obj = request.user
     form = EditUserForm(instance=obj)
@@ -83,6 +120,7 @@ def edit_self(request):
 
     return render(request, 'dashboard/partials/_edit_user.html', context)
 
+@login_required
 def change_password(request):
     if request.method == 'POST':
         form = PasswordEditForm(data=request.POST, user=request.user)
@@ -101,6 +139,7 @@ def change_password(request):
 
     return render(request, 'dashboard/partials/_change_password.html', context)
 
+@login_required
 def delete_user(request, id):
     obj = User.objects.get(id=id)
     if obj:

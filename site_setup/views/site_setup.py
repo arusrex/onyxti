@@ -3,6 +3,7 @@ from site_setup.models import SiteSetup
 from home.forms import NewsLetterForm, ContactForm
 from site_setup.forms import SiteSetupForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def site_setup(request):
     try:
@@ -21,6 +22,7 @@ def site_setup(request):
 
     return context
 
+@login_required
 def dashboard_settings(request):
     obj = SiteSetup.objects.first()
     form = SiteSetupForm(instance=obj)

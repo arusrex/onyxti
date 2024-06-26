@@ -3,7 +3,9 @@ from home.models import Testemonial, TestemonialsItems
 from home.forms import TestemonialForm, TestemonialItemsForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def dash_testemonial(request):
     obj = Testemonial.objects.first()
     form = TestemonialForm(instance=obj)
@@ -25,6 +27,7 @@ def dash_testemonial(request):
 
     return render(request, 'dashboard/pages/testemonials.html', context)
 
+@login_required
 def testemonials(request):
     objs = TestemonialsItems.objects.order_by('-id')
     form = TestemonialItemsForm()
@@ -50,6 +53,7 @@ def testemonials(request):
 
     return render(request, 'dashboard/pages/testemonial_items.html', context)
 
+@login_required
 def testemonial(request, id):
     obj = TestemonialsItems.objects.get(id=id)
     form = TestemonialItemsForm(instance=obj)
@@ -71,6 +75,7 @@ def testemonial(request, id):
 
     return render(request, 'dashboard/partials/_edit_testemonial_items.html', context)
 
+@login_required
 def delete_testemonial(request, id):
     obj = TestemonialsItems.objects.get(id=id)
     if obj:

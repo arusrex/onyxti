@@ -3,7 +3,9 @@ from home.models import Contact
 from home.forms import ContactForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def contacts(request):
     objs = Contact.objects.order_by('-created_at')
 
@@ -18,6 +20,7 @@ def contacts(request):
     return render(request, 'dashboard/pages/contacts.html', context)
 
 
+@login_required
 def delete_contact(request, id):
     obj = Contact.objects.get(id=id)
 

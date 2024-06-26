@@ -3,7 +3,9 @@ from home.forms import BannerForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def banners(request):
     objs = Carousel.objects.order_by('-id')
     form = BannerForm()
@@ -27,6 +29,7 @@ def banners(request):
     return render(request, 'dashboard/pages/carousel.html', context)
 
 
+@login_required
 def edit_banner(request, id):
     obj = Carousel.objects.get(id=id)
 
@@ -46,6 +49,7 @@ def edit_banner(request, id):
 
     return render(request, 'dashboard/partials/_edit_banner.html', context)
 
+@login_required
 def delete_banner(request, id):
     obj = Carousel.objects.get(id=id)
     if obj:

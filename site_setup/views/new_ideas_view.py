@@ -3,7 +3,9 @@ from home.forms import NewIdeasForm, NewIdeasItemsForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def new_ideas(request):
     obj = NewIdeas.objects.first()
     form = NewIdeasForm(instance=obj)
@@ -23,6 +25,7 @@ def new_ideas(request):
     
     return render(request, 'dashboard/pages/new_ideas.html', context)
 
+@login_required
 def new_ideas_items(request):
     objs = NewIdeasItems.objects.order_by('-id')
     form = NewIdeasItemsForm()
@@ -45,6 +48,7 @@ def new_ideas_items(request):
 
     return render(request, 'dashboard/pages/new_idea_items.html', context)
 
+@login_required
 def edit_new_idea(request, slug):
     obj = NewIdeasItems.objects.get(slug=slug)
     form = NewIdeasItemsForm(instance=obj)
@@ -63,6 +67,7 @@ def edit_new_idea(request, slug):
 
     return render(request, 'dashboard/partials/_edit_new_idea.html', context)
 
+@login_required
 def delete_new_idea(request, slug):
     obj = NewIdeasItems.objects.get(slug=slug)
     if obj:

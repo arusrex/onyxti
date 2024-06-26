@@ -3,7 +3,9 @@ from home.models import Services, ServicesItems
 from home.forms import ServicesForm, ServicesItemsForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def dash_services(request):
     obj = Services.objects.first()
     form = ServicesForm(instance=obj)
@@ -21,6 +23,7 @@ def dash_services(request):
 
     return render(request, 'dashboard/pages/services.html', context)
 
+@login_required
 def services_items(request):
     objs = ServicesItems.objects.order_by('-id')
     form = ServicesItemsForm()
@@ -43,6 +46,7 @@ def services_items(request):
 
     return render(request, 'dashboard/pages/services_items.html', context)
 
+@login_required
 def edit_service(request, id):
     obj = ServicesItems.objects.get(id=id)
     update_form = ServicesItemsForm(instance=obj)
@@ -60,6 +64,7 @@ def edit_service(request, id):
 
     return render(request, 'dashboard/partials/_edit_services.html', context)
 
+@login_required
 def delete_service(request, slug):
     obj = ServicesItems.objects.get(slug=slug)
     if obj:
