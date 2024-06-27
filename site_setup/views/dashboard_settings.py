@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from home.models import NewsLetter, Contact
-from site_setup.forms import NewUserForm, EditUserForm, PasswordEditForm
+from site_setup.models import MenuLinks
+from site_setup.forms import NewUserForm, EditUserForm, PasswordEditForm, MenuLinksForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -148,3 +149,59 @@ def delete_user(request, id):
     else:
         messages.error(request, 'Error!')
     return redirect('home:users')
+
+@login_required
+def menu_links(request):
+    objs = MenuLinks.objects.all()
+    form = MenuLinksForm()
+
+    if request.method == 'POST':
+        form = MenuLinksForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Saved!')
+        else:
+            messages.error(request, 'Error!')
+        return redirect('home:menu_links')
+    
+    paginator = Paginator(objs, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'form': form,
+        'page_obj': page_obj,
+    }
+
+    return render(request, 'dashboard/pages/menu_links.html', context)
+
+@login_required
+def edit_menu_links(request, id):
+    obj = MenuLinks.objects.get(id=id)
+    form = MenuLinksForm(instance=obj)
+
+    if request.method == 'POST':
+        form = MenuLinksForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Saved!')
+        else:
+            messages.error(request, 'Error!')
+
+        return redirect('home:edit_menu_links', id=id)
+    
+    context = {
+        'obj': obj,
+        'update_form': form,
+    }
+
+    return render(request, 'dashboard/partials/_edit_menu_links.html', context)
+
+@login_required
+def delete_menu_links(request, id):
+    obj = MenuLinks.objects.get(id=id)
+    if obj:
+        obj.delete()
+        messages.success(request, 'Deleted!')
+    
+    return redirect('home:menu_links')

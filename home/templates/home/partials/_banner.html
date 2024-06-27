@@ -3,128 +3,36 @@
         <section class="banner_main">
             <div id="banner1" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#banner1" data-slide-to="0" class="active"></li>
-                    <li data-target="#banner1" data-slide-to="1"></li>
-                    <li data-target="#banner1" data-slide-to="2"></li>
-                    <li data-target="#banner1" data-slide-to="3"></li>
-                    <li data-target="#banner1" data-slide-to="4"></li>
+                    {% for item in carousels %}
+                    <li data-target="#banner1" data-slide-to="{{forloop.counter0}}" class="{% if forloop.first %}active{% endif %}"></li>
+                    {% endfor %}
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    {% for item in carousels %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
                         <div class="container">
-                        <div class="carousel-caption">
-                            <div class="row d_flex">
-                                <div class="col-md-6">
-                                    <div class="text-bg">
-                                    <h1>Strategy And <br>Research</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                    <a href="#">About More </a>
+                            <div class="carousel-caption">
+                                <div class="row d_flex">
+                                    <div class="col-md-6">
+                                        <div class="text-bg">
+                                        <h1>{{item.title}}</h1>
+                                        <p>{{item.description|safe}}</p>
+                                        <a href="{{item.link.url}}">{{item.button_name}}</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text_img">
-                                    <figure>
-                                        <img src="{% static 'images/pct.png' %}" alt="#"/>
-                                        <h3>01</h3>
-                                    </figure>
+                                    <div class="col-md-6">
+                                        <div class="text_img">
+                                        <figure>
+                                            <img src="{{item.image.url}}" alt="{{item.title}}"/>
+                                            <h3>{{forloop.counter0}}</h3>
+                                        </figure>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="container">
-                        <div class="carousel-caption">
-                            <div class="row d_flex">
-                                <div class="col-md-6">
-                                    <div class="text-bg">
-                                    <h1>Strategy And <br>Research</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                    <a href="#">About More </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text_img">
-                                    <figure>
-                                        <img src="{% static 'images/pct.png' %}" alt="#"/>
-                                        <h3>01</h3>
-                                    </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container">
-                        <div class="carousel-caption">
-                            <div class="row d_flex">
-                                <div class="col-md-6">
-                                    <div class="text-bg">
-                                    <h1>Strategy And <br>Research</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                    <a href="#">About More </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text_img">
-                                    <figure>
-                                        <img src="{% static 'images/pct.png' %}" alt="#"/>
-                                        <h3>01</h3>
-                                    </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container">
-                        <div class="carousel-caption">
-                            <div class="row d_flex">
-                                <div class="col-md-6">
-                                    <div class="text-bg">
-                                    <h1>Strategy And <br>Research</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                    <a href="#">About More </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text_img">
-                                    <figure>
-                                        <img src="{% static 'images/pct.png' %}" alt="#"/>
-                                        <h3>01</h3>
-                                    </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container">
-                        <div class="carousel-caption">
-                            <div class="row d_flex">
-                                <div class="col-md-6">
-                                    <div class="text-bg">
-                                    <h1>Strategy And <br>Research</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                    <a href="#">About More </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text_img">
-                                    <figure>
-                                        <img src="{% static 'images/pct.png' %}" alt="#"/>
-                                        <h3>01</h3>
-                                    </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>

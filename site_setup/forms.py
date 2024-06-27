@@ -1,4 +1,4 @@
-from site_setup.models import SiteSetup
+from site_setup.models import SiteSetup, MenuLinks
 from django import forms
 from django_summernote.widgets import SummernoteWidget
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
@@ -38,6 +38,15 @@ class SiteSetupForm(forms.ModelForm):
             'x_twitter': forms.URLInput(attrs={'class':'form-control',}),
             'youtube': forms.URLInput(attrs={'class':'form-control',}),
             'tiktok': forms.URLInput(attrs={'class':'form-control',}),
+        }
+
+class MenuLinksForm(forms.ModelForm):
+    class Meta:
+        model = MenuLinks
+        fields = '__all__'
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control',}),
+            'url': forms.URLInput(attrs={'class':'form-control',}),
         }
 
 class NewUserForm(UserCreationForm):

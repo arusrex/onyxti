@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from site_setup.models import SiteSetup
+from site_setup.models import SiteSetup, MenuLinks
 from home.forms import NewsLetterForm, ContactForm
 from site_setup.forms import SiteSetupForm
 from django.contrib import messages
@@ -10,6 +10,8 @@ def site_setup(request):
         settings = SiteSetup.objects.first()
         newsletter_form = NewsLetterForm()
         contact_form = ContactForm()
+        menu_links = MenuLinks.objects.all()
+
     except Exception as e:
         print(f'Usúario master não criou as primeiras configurações, erro: {e}')
         settings = ''
@@ -18,6 +20,7 @@ def site_setup(request):
         'settings': settings,
         'newsletter_form': newsletter_form,
         'contact_form': contact_form,
+        'menu_links': menu_links,
     }
 
     return context

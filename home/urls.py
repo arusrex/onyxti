@@ -33,6 +33,11 @@ urlpatterns = [
     #SETTINGS
     path('settings/', dashboard_settings, name="settings"),
 
+    #MENU LINKS
+    path('menu_links/', menu_links, name="menu_links"),
+    path('edit_menu_links/<int:id>/', edit_menu_links, name="edit_menu_links"),
+    path('delete_menu_links/<int:id>/', delete_menu_links, name="delete_menu_links"),
+
     #CONTACTS
     path('contacts/', contacts, name="contacts"),
     path('new_contact/', new_contact, name="new_contact"),

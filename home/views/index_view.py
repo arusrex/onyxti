@@ -1,4 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from home.models import Carousel
 
 def index(request):
-    return render(request, 'home/pages/index.html')
+    carousels = Carousel.objects.all()
+
+    context = {
+        'carousels': carousels,
+    }
+    
+    return render(request, 'home/pages/index.html', context)

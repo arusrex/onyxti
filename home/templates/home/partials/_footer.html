@@ -7,11 +7,9 @@
                         <div class="col-sm-6">
                             <h3 class="mx-auto">Menu</h3>
                             <ul class="link_menu">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">About services</a></li>
-                                <li><a href="#">About Departments</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Contact Us</a></li>
+                                {% for item in menu_links %}
+                                <li><a href="{{item.url.url}}">{{item.title}}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="col-sm-6 mt-4 my-auto">
@@ -29,12 +27,25 @@
                             <ul class="d-flex justify-content-center about_us">
                                 <li class="text-center">{{settings.site_description}}</li>
                             </ul>
-                            <ul class="social_icon d-flex justify-content-center">
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            </ul>
+                            {% if settings.show_socials %}
+                                <ul class="social_icon d-flex justify-content-center">
+                                    {% if settings.facebook %}
+                                        <li><a href="{{settings.facebook.url}}"><i class="fa-brands fa-facebook"></i></a></li>
+                                    {% endif %}
+                                    {% if settings.x_twitter %}
+                                        <li><a href="{{settings.x_twitter.url}}"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                                    {% endif %}
+                                    {% if settings.youtube %}
+                                        <li><a href="{{settings.youtube.url}}"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+                                    {% endif %}
+                                    {% if settings.instagram %}
+                                        <li><a href="{{settings.instagram.url}}"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                                    {% endif %}
+                                    {% if settings.tiktok %}
+                                        <li><a href="{{settings.tiktok.url}}"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
                         </div>
                     </div>
                     <div>

@@ -37,3 +37,14 @@ class SiteSetup(models.Model):
     def __str__(self):
         return self.site_name
     
+
+class MenuLinks(models.Model):
+    class Meta:
+        verbose_name = 'Menu Link'
+        verbose_name_plural = 'Menus Links'
+    
+    title = models.CharField(max_length=65)
+    url = models.URLField(unique=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.title

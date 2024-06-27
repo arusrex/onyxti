@@ -1,0 +1,15 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+    <div class="p-5 pt-0">
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in update_form %}
+                <div class="mb-3">
+                    {{field.label_tag}}
+                    {{field}}
+                </div>
+            {% endfor %}
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Save</button>
+        </form>
+    </div>
+{% endblock content %}
