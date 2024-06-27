@@ -10,6 +10,7 @@ class TestemonialForm(forms.ModelForm):
             'image': forms.ClearableFileInput(attrs={'class':'form-control', 'accept': 'image/*',}),
             'title': forms.TextInput(attrs={'class':'form-control',}),
             'link': forms.URLInput(attrs={'class':'form-control',}),
+            'description': SummernoteWidget(),
         }
 
 class TestemonialItemsForm(forms.ModelForm):

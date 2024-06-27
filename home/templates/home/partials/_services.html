@@ -5,43 +5,23 @@
       <div class="row">
          <div class="col-md-10 offset-md-1">
             <div class="titlepage">
-               <h2>Build Your Website, Let's Check Our Services</h2>
-               <p>
-                  dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                  veniam, quis nostrud
-               </p>
+               <h2>{{services.title}}</h2>
+               <p>{{services.description|safe}}</p>
             </div>
          </div>
       </div>
       <div class="row">
+         {% for service in services_items %}
          <div class="col-md-4">
             <div id="serv_hover" class="services_box">
-               <i><img src="{% static 'images/service1.png' %}" alt="#" /></i>
-               <h3>Web Design</h3>
+               <i><img src="{{service.image.url}}" alt="{{service.title}}" /></i>
+               <h3>{{service.title}}</h3>
                <a class="right_irro" href="#"
                   ><i class="fa fa-long-arrow-right" aria-hidden="true"></i
                ></a>
             </div>
          </div>
-         <div class="col-md-4">
-            <div id="serv_hover" class="services_box">
-               <i><img src="{% static 'images/service2.png' %}" alt="#" /></i>
-               <h3>Data Analysis</h3>
-               <a class="right_irro" href="#"
-                  ><i class="fa fa-long-arrow-right" aria-hidden="true"></i
-               ></a>
-            </div>
-         </div>
-         <div class="col-md-4">
-            <div id="serv_hover" class="services_box">
-               <i><img src="{% static 'images/service3.png' %}" alt="#" /></i>
-               <h3>Marketing Analysis</h3>
-               <a class="right_irro" href="#"
-                  ><i class="fa fa-long-arrow-right" aria-hidden="true"></i
-               ></a>
-            </div>
-         </div>
+         {% endfor %}
       </div>
    </div>
 </div>

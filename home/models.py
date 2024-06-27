@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from home.utils.images import resize_image, resize_image_all
 
 class Carousel(models.Model):
     class Meta:
@@ -16,7 +17,11 @@ class Carousel(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+
         super(Carousel, self).save(*args, **kwargs)
+
+        if self.image:
+            resize_image_all(self.image, 1920, 1080, True, 100)
 
     def __str__(self):
         return self.title
@@ -30,7 +35,15 @@ class Team(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     short = models.CharField(max_length=255, blank=True, null=True)
+    projects = models.IntegerField(blank=True, null=True)
+    button_name = models.CharField(max_length=65, blank=True, null=True)
     link = models.URLField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        super(Team, self).save(*args, **kwargs)
+
+        if self.image:
+            resize_image(self.image, 800, True, 70)
 
     def __str__(self):
         return self.title
@@ -84,12 +97,15 @@ class NewIdeasItems(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     image = models.ImageField(upload_to='new_ideas/%Y/%m/%d')
     title = models.CharField(max_length=255, unique=True)
+    short = models.CharField(max_length=255)
     link = models.URLField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
         super(NewIdeasItems, self).save(*args, **kwargs)
+        if self.image:
+            resize_image(self.image, 800, True, 70)
 
     def __str__(self):
         return self.title
@@ -101,7 +117,14 @@ class Testemonial(models.Model):
 
     image = models.ImageField(upload_to='new_ideas/%Y/%m/%d')
     title = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
     link = models.URLField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        super(Testemonial, self).save(*args, **kwargs)
+
+        if self.image:
+            resize_image(self.image, 800, True, 70)
 
     def __str__(self):
         return self.title
@@ -117,6 +140,12 @@ class TestemonialsItems(models.Model):
     link = models.URLField(blank=True, null=True)
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        super(TestemonialsItems, self).save(*args, **kwargs)
+
+        if self.image:
+            resize_image_all(self.image, 80, 80, True, 100)
 
     def __str__(self):
         return self.name

@@ -10,11 +10,11 @@
           </div>
           <div class="col-md-6 offset-md-1">
              <div class="titlepage">
-                <h2>We Are A Dynamic Team Of Seo Agency</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod enim tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                <h3>PROJECTS COMPLETED</h3>
-                <strong>1165 <span class="yellow">+</span></strong>
-                <a class="read_more" href="#"> Read More</a>
+                <h2>{{team.title}}</h2>
+                <p>{{team.description|safe}}</p>
+                <h3>{{team.short}}</h3>
+                <strong>{{team.projects}} <span class="yellow">+</span></strong>
+                <a class="read_more" href="{{team.link}}"> {{team.button_name}}</a>
              </div>
           </div>
        </div>

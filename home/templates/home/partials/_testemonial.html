@@ -1,35 +1,28 @@
 {% load static %}
 <!-- testimonial -->
 <div class="testimonial">
-    <div class="container">
-       <div class="row">
-          <div class="col-md-12">
-             <div class="titlepage">
-                <h2>Testimonial</h2>
-                <p>labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-             </div>
-          </div>
-       </div>
-       <div class="row">
-          <div class="col-md-6 ">
-             <div class="test_box margin_bottom">
-                <p>psum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum </p>
-                <div class="test_icon">
-                   <i><img src="{% static 'images/cos.png' %}" alt="#"/></i>
-                   <h4>Joans Mark <br> <span class="yellow">Call</span></h4>
-                </div>
-             </div>
-          </div>
-          <div class="col-md-6">
-             <div class="test_box">
-                <p>psum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum </p>
-                <div class="test_icon">
-                   <i><img src="{% static 'images/cos.png' %}" alt="#"/></i>
-                   <h4>Joans Mark <br> <span class="yellow">Call</span></h4>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="titlepage">
+               <h2>{{testemonials.title}}</h2>
+               <p>{{testemonials.description|safe}}</p>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         {% for item in testemonial_items %}
+         <div class="col-md-6 ">
+            <div class="test_box margin_bottom">
+               <p>{{item.comment|safe}}</p>
+               <div class="test_icon">
+                  <i><img src="{{item.image.url}}" alt="{{item.name}}" width="60" height="60"/></i>
+                  <h4>{{item.name}}<br> <span class="yellow">{{item.call}}</span></h4>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
 </div>
  <!-- end testimonial -->

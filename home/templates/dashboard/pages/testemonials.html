@@ -3,6 +3,11 @@
     <div class="container mb-4">
         <h1>Testemonials</h1>
         <form method="POST" enctype="multipart/form-data" action="{% url "home:dash_testemonial" %}">
+            {% if obj.image %}
+            <div class="mb-3">
+                <img src="{{obj.image.url}}" class="img-fluid rounded d-block shadow border border-sm p-4" width="300" height"200"/>
+            </div>
+            {% endif %}
             {% csrf_token %}
             {% for item in form %}
                 <div class="mb-3">
