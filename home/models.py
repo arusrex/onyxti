@@ -174,4 +174,30 @@ class NewsLetter(models.Model):
 
     def __str__(self):
         return self.email
-    
+
+class BlogItems(models.Model):
+    class Meta:
+        verbose_name = 'Blog Item'
+        verbose_name_plural = 'Blog Items'
+
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    title = models.CharField(max_length=155)
+    image = models.ImageField(upload_to='blog/%Y/%m/%d')
+    short = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    buttom_name = models.CharField(max_length=65)
+    link = models.URLField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        
+        super(BlogItems, self).save(*args, **kwargs)
+        
+        if self.image:
+            resize_image_all(self.image, 1920, 1080, True, 100)
+
+    def __str__(self):
+        return self.title

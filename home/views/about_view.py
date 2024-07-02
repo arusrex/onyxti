@@ -1,4 +1,11 @@
 from django.shortcuts import render
+from home.models import Team
 
 def about(request):
-    return render(request, 'home/pages/about.html')
+    team = Team.objects.first()
+
+    context = {
+        'team': team,
+    }
+
+    return render(request, 'home/pages/about.html', context)

@@ -5,3 +5,4 @@ from .new_ideas import *
 from .testemonial import *
 from .contact import *
 from .newsletter import *
+from .blog import *

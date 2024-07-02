@@ -10,7 +10,7 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage">
-                     <h2>Our Blog</h2>
+                     <h2>Nossas Notícias e Novidades</h2>
                   </div>
                </div>
             </div>
@@ -20,27 +20,16 @@
       <div class="blog">
          <div class="container">
             <div class="row">
+               {% for item in page_obj %}
                <div class="col-md-4">
                   <div class="blog_box">
-                     <figure><img src="{% static 'images/Blog_img1.png' %}" alt="#"/></figure>
-                     <h3>Seo marking</h3>
-                     <a class="read_more" href="#">Read More</a>
+                     <figure><img src="{{item.image.url}}" alt="{{item.title}}"/></figure>
+                     <h3>{{item.title}}</h3>
+                     <p>{{item.short}}</p>
+                     <a class="read_more" href="{{item.link}}">{{item.buttom_name}}</a>
                   </div>
                </div>
-               <div class="col-md-4">
-                  <div class="blog_box">
-                     <figure><img src="{% static 'images/Blog_img2.png' %}" alt="#"/></figure>
-                     <h3>Seo marking</h3>
-                     <a class="read_more" href="#">Read More</a>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="blog_box">
-                     <figure><img src="{% static 'images/Blog_img3.png' %}" alt="#"/></figure>
-                     <h3>Seo marking</h3>
-                     <a class="read_more" href="#">Read More</a>
-                  </div>
-               </div>
+               {% endfor %}
             </div>
          </div>
       </div>

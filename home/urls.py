@@ -9,6 +9,7 @@ from site_setup.views.newsletter_view import *
 from home.views.contact_view import *
 from site_setup.views.contact_view import *
 from site_setup.views.dashboard_settings import *
+from site_setup.views.blog_view import *
 
 app_name = 'home'
 
@@ -78,4 +79,9 @@ urlpatterns = [
     path('testemonials/', testemonials, name="testemonials"),
     path('testemonial/<int:id>/', testemonial, name="testemonial"),
     path('delete_testemonial/<int:id>/', delete_testemonial, name="delete_testemonial"),
+
+    #BLOG
+    path('blog_items/', blog_items, name="blog_items"),
+    path('edit_blog_items/<slug:slug>/', edit_blog_item, name="edit_blog_item"),
+    path('delete_blog_item/<slug:slug>/', delete_blog_item, name="delete_blog_item"),
 ]

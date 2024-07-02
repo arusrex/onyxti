@@ -1,0 +1,20 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+    <div class="p-5 pt-0">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if obj.image %}
+            <div class="mb-3">
+                <img src="{{obj.image.url}}" class="img-fluid rounded d-block shadow border border-sm p-4" width="300" height"200"/>
+            </div>
+            {% endif %}
+            {% for p in update_form %}
+                <div class="mb-3">
+                    {{p.label_tag}}
+                    {{p}}
+                </div>
+            {% endfor %}
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Save</button>
+        </form>
+    </div>
+{% endblock content %}
