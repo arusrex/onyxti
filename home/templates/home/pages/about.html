@@ -10,7 +10,7 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage">
-                     <h2>About Us</h2>
+                     <h2>Sobre {{settings.site_name}}</h2>
                   </div>
                </div>
             </div>
@@ -22,17 +22,16 @@
       <div class="team">
          <div class="container">
             <div class="row d_flex">
-              
                <div class="col-md-6">
                   <div class="titlepage">
-                      <h3>PROJECTS COMPLETED</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod enim tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                     <a class="read_more" href="#"> Read More</a>
+                     <h3>{{team.title}}</h3>
+                     <p>{{team.description|safe}}</p>
+                     <a class="read_more" href="{{team.link}}">{{team.button_name}}</a>
                   </div>
                </div>
                 <div class="col-md-5 offset-md-1">
                   <div class="team_img">
-                     <figure><img src="{% static 'images/sco.png' %}" alt="#"/></figure>
+                     <figure><img src="{{team.image.url}}" alt="{{team.title}}"/></figure>
                   </div>
                </div>
             </div>

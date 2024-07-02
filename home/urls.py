@@ -1,5 +1,5 @@
 from django.urls import path
-from home.views import blog, about, index, services
+from home.views import blog, about, index, services, blog_item
 from site_setup.views import dashboard, team, dashboard_settings
 from site_setup.views.services_view import *
 from site_setup.views.carousel_view import *
@@ -84,4 +84,5 @@ urlpatterns = [
     path('blog_items/', blog_items, name="blog_items"),
     path('edit_blog_items/<slug:slug>/', edit_blog_item, name="edit_blog_item"),
     path('delete_blog_item/<slug:slug>/', delete_blog_item, name="delete_blog_item"),
+    path('blog_item/<slug:slug>/', blog_item, name="blog_item"),
 ]

@@ -16,3 +16,12 @@ def blog(request):
     }
 
     return render(request, 'home/pages/blog.html', context)
+
+def blog_item(request, slug):
+    obj = BlogItems.objects.get(slug=slug)
+
+    context = {
+        'item': obj,
+    }
+
+    return render(request, 'home/pages/blog_item.html', context)

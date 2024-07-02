@@ -25,7 +25,7 @@
                                 <h1 class="text-white">{{settings.site_name}}</h1>
                             {% endif %}
                             <ul class="d-flex justify-content-center about_us">
-                                <li class="text-center">{{settings.site_description}}</li>
+                                <li class="text-center">{{settings.site_description|safe}}</li>
                             </ul>
                             {% if settings.show_socials %}
                                 <ul class="social_icon d-flex justify-content-center">

@@ -23,10 +23,10 @@
                {% for item in page_obj %}
                <div class="col-md-4">
                   <div class="blog_box">
-                     <figure><img src="{{item.image.url}}" alt="{{item.title}}"/></figure>
+                     <figure><img href="{% url "home:blog_item" item.slug %}" src="{{item.image.url}}" alt="{{item.title}}"/></figure>
                      <h3>{{item.title}}</h3>
                      <p>{{item.short}}</p>
-                     <a class="read_more" href="{{item.link}}">{{item.buttom_name}}</a>
+                     <a class="read_more" href="{% url "home:blog_item" item.slug %}">{{item.buttom_name}}</a>
                   </div>
                </div>
                {% endfor %}

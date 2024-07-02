@@ -1,0 +1,21 @@
+{% extends "base_home.html" %}
+{% block content %}
+<body class="main-layout inner_header contact_page">
+    {% include "home/partials/_loader.html" %}
+    {% include "home/partials/_header.html" %}
+    <div class="row justify-content-center  my-4">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+            <div class="card-body p-4 border border-sm shadow-sm rounded">
+                <h1 class="text-center">{{item.title}}</h1>
+                <img src="{{ item.image.url}}" alt="item.title">
+                <div class="font-italic my-2">{{item.short}}</div>
+                <p>{{item.description|safe}}</p>
+                <p><small>Criado em: {{item.created_at}}</small></p>
+                <p><small>Atualizado em:{{item.updated_at}}</small></p>
+            </div>
+        </div>
+    </div>
+    {% include "home/partials/_footer.html" %}
+    {% include "home/partials/_scripts.html" %}
+</body>
+{% endblock content %}

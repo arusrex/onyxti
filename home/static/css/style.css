@@ -820,7 +820,7 @@ button {
      width: 100%;
      height: 47px;
      background: transparent;
-     color: #dfdfdf;
+     color: #636363;
      font-size: 18px;
      font-weight: normal;
      border-right: inherit;
@@ -834,7 +834,7 @@ button {
      width: 100%;
      height: 47px;
      background: transparent;
-     color: #dfdfdf;
+     color: #636363;
      font-size: 18px;
      font-weight: normal;
      border-right: inherit;
@@ -864,7 +864,7 @@ button {
 }
 
 #request *::placeholder {
-     color: #dfdfdf;
+     color: #636363;
      opacity: 1;
 }
 
